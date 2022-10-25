@@ -17,7 +17,7 @@ PACE_API_URL=https://eu-robotic.copado.com/pace/v4/builds
 # Start the build
 BUILD=$(curl -sS -d '{"key": "'${PACE_API_KEY}'", "inputParameters": [{"key": "BROWSER", "value": "firefox"}]}' -H "Content-Type: application/json" -X POST ${PACE_API_URL})
 echo "${BUILD}"
-BUILD_ID=$(echo "${BUILD}" | grep -Po '"id":\K[0-9]+')
+BUILD_ID=$(echo "${BUILD}" | grep -o '"id":\K[0-9]+')
 if [ -z "${BUILD_ID}" ]; then
     exit 1
 fi
