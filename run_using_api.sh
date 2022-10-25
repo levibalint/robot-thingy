@@ -1,13 +1,13 @@
 #!/bin/bash
 
-while getopts u:a:f: flag
+while getopts k: flag
 do
     case "${flag}" in
         k) PACE_API_KEY=${OPTARG};;
     esac
 done
 
-if test -z "$var" 
+if test -z "$PACE_API_KEY" 
 then
     echo "\$PACE_API_KEY is empty! Exiting."
     exit 1
