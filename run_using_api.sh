@@ -29,7 +29,7 @@ STATUS='"executing"'
 while [ "${STATUS}" == '"executing"' ]; do
     sleep 10
     RESULTS=$(curl -sS ${PACE_API_URL}/${BUILD_ID}?key=${PACE_API_KEY})
-    STATUS=$(echo "${RESULTS}" | grep -Po '"status": *\K"[^"]*"' | head -1)
+    STATUS=$(echo "${RESULTS}" | grep -o '"status": *\K"[^"]*"' | head -1)
     echo -n "."
 done
 
